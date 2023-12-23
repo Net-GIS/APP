@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp|Material+Symbols+Outlined">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Net GIS - Network Oriented GIS Mapping Software</title>
+        <meta name="description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta name="keywords" content="net GIS, gis, NET, Net Gis, mapping, networking, network mapping" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://netgis.app" />
+        <meta property="og:title" content="Net GIS - Network Oriented GIS Mapping Software" />
+        <meta property="og:description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta property="og:image" content="https://netgis.app/img/logo.png" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://netgis.app" />
+        <meta property="twitter:title" content="Net GIS - Network Oriented GIS Mapping Software" />
+        <meta property="twitter:description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta property="twitter:image" content="https://netgis.app/img/logo.png" />
+        <meta name="google-signin-client_id" content="114478511397-k9qegeti6q24tcuvq51a17lbq2oqfeqg.apps.googleusercontent.com">
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://netgis.app" />
+    </head>
+    <body>
+
+    </body>
+</html>
+<style>
+@font-face {
+    font-family: 'venus';
+    src: url('./font/venus.otf') format('opentype');
+}
+</style>
+<script type="module">
+    import Component from './js/components/Component.js';
+    var header_height = 80;
+    console.log(window.localStorage.getItem('g_uid'))
+    function login(){
+        fetch('/auth/login', {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                g_uid:window.localStorage.getItem('g_uid')
+            })
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data)
+            if(data.exists && (data.exists.subscription >= 1)){
+                window.location.href = '/app';   
+            }else{
+                window.location.href = 'https://buy.stripe.com/test_14k8zN6w00lC1dC288?client_reference_id=' + window.localStorage.getItem('g_uid');
+            }
+        })
+    }
+
+    function login_signup_prompt(type){
+        var prompt = document.createElement('div');
+        var prompt_text = document.createElement('h1');
+        var google_button = document.createElement('div');
+        prompt.Style({
+            position:'absolute',
+            top:'0px',
+            left:'0px',
+            width:'100%',
+            height:'100%',
+            background:'rgba(0,0,0,0.5)',
+            zIndex:'1000',
+        }).onclick = () => {
+            prompt.remove();
+        }
+        prompt_text.innerText = 'Sign In';
+        prompt_text.Style({
+            color:'white',
+            fontFamily:'venus',
+            fontSize:'30px',
+            textAlign:'center',
+            width:'100%',
+            display:'block',
+            marginTop:'calc(20%)',
+        })
+
+        google_button.classList.add('g-signin2');
+        google_button.id = 'gSignIn';
+    
+        google_button.Style({
+            display:'block',
+            width:'250px',
+            height:'40px',
+            background:'white',
+            margin:'auto',
+            borderRadius:'10px',
+        })
+
+        google_button.onclick = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        
+        prompt.append(prompt_text, google_button);
+        document.body.append(prompt);
+
+        gapi.auth2.init().then((auth2) => {
+            gapi.signin2.render('gSignIn', {
+                'scope': 'profile email',
+                'width': 250,
+                'height': 40,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': (user) => {
+                    var g_uid = auth2.currentUser.get().getId();
+                    window.localStorage.setItem('g_uid', g_uid);
+                    console.log(g_uid);
+                    if(auth2.isSignedIn.get()){
+                        login();
+                    }
+
+                },
+                'onfailure': () => {
+
+                },
+
+            })
+        })
+    }
+
+    document.body.Style({
+        'margin': '0px',
+        'padding': '0px',
+        'height': '100%',
+        'width': '100%',
+        background:'#303952',
+        userSelect:'none'
+    })
+
+    var header = document.createElement('div');
+    var main_content = document.createElement('div');
+    var header_logo = document.createElement('div');
+    var header_text = document.createElement('h1');
+    var login_button = document.createElement('button');
+    var signup_button = document.createElement('button');
+    
+    header.Style({
+        'height': `${header_height}px`,
+        'width': '100%',
+        display:'block',
+    })
+
+    header_logo.Style({
+        height:'calc(100% - 20px)',
+        marginTop:'10px',
+        marginLeft:'20px',
+        width:'90px',
+        float:'left',
+        backgroundImage:'url(./img/just_logo.png)',
+        backgroundSize:'cover',
+    })
+
+
+    header_text.innerText = 'Net GIS';
+    login_button.innerText = 'Open App';
+
+    header_text.Style({
+        position:'absolute',
+        width:'100%',
+        height:`${header_height - 40}px`,
+        lineHeight:`${header_height - 40}px`,
+        textAlign:'center',
+        fontSize:'30px',
+        fontFamily:'venus',
+        color:'white',
+        margin:'0px',
+        marginTop:'20px',
+        zIndex:'-1'
+
+    })
+
+    var button_styles = {
+        float:'right',
+        height:`${header_height - 40}px`,
+        width:'100px',
+        borderRadius:'5px',
+        border:'none',
+        background:'transparent',
+        color:'white',
+        fontSize:'12px',
+        fontFamily:'venus',
+        cursor:'pointer',
+        background:'transparent',
+        marginTop:'20px',
+        marginRight: '20px',
+        border:'1px solid #3d9cd3'
+    }
+
+    login_button.Style(button_styles)
+    
+    login_button.onclick = () => {
+        login_signup_prompt('Login');
+    }
+
+    main_content.Style({
+        position: 'relative',
+        height:`calc(100vh - ${header_height}px)`,
+        width:'100%',
+        display:'block'
+    })
+
+    header.Append([
+        header_logo,
+        header_text,
+        login_button
+    ])
+
+    document.body.append(header, main_content);
+</script>
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>

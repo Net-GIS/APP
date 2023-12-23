@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+        <script src="/NCache"></script>
+        <script src="js/main.js" type="module"></script>
+        <title>Net GIS - Network Oriented GIS Mapping Software</title>
+        <meta name="description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta name="keywords" content="net GIS, gis, NET, Net Gis, mapping, networking, network mapping" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://netgis.app" />
+        <meta property="og:title" content="Net GIS - Network Oriented GIS Mapping Software" />
+        <meta property="og:description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta property="og:image" content="https://netgis.app/img/logo.png" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://netgis.app" />
+        <meta property="twitter:title" content="Net GIS - Network Oriented GIS Mapping Software" />
+        <meta property="twitter:description" content="Network Oriented GIS Mapping Software for efficient spatial data management and analysis." />
+        <meta property="twitter:image" content="https://netgis.app/img/logo.png" />
+        <link rel="manifest" href="/manifest"/>
+      
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://netgis.app"/>
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+    NCache._load_scripts([
+        'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css',
+        'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js',
+        'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css',
+        'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js',
+        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js',
+        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css',
+        'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp|Material+Symbols+Outlined',
+        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css',
+        'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.js',
+        'https://unpkg.com/@turf/turf@6/turf.min.js'
+    ]);
+</script>
+<style>
+::placeholder {
+    color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display:none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.other-placeholder::placeholder {
+    color: darkgrey;
+}
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+    max-height: 25px;
+}   
+
+.mapboxgl-ctrl-geocoder--icon{
+    all:unset;
+    margin:3px;
+    position:absolute;
+}
+
+.mapboxgl-ctrl-geocoder--button{
+    margin-right:15px;
+    margin-top:-5px;
+}
+
+.mapboxgl-ctrl-geocoder--input{
+    all:unset;
+    width:calc(100% - 50px);
+    height:25px;
+    font-size:12px;
+    padding-left:25px;
+}
+
+.mapboxgl-ctrl-geocoder--input::placeholder{
+    color:darkgrey;
+
+}
+
+
+.mapboxgl-ctrl-geocoder--powered-by{
+    all: unset;
+    display:none !important;
+}
+
+</style>
